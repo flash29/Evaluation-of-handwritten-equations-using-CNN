@@ -2,7 +2,7 @@
 
 Evaluation of Handwritten Expression using CNN(Convolutional Neural Networks)
 
-The CNN is trained with the images in the dataset and saved using the hdf5 and json file.(cnn.py)
+The CNN is trained with the images in the datasetwhich has the 13 classes (0-9,+,-,*)(cnn.py)
 
-The inout image given from the user is segmented and using our trained CNN we predict the class of the images 
+The input image given from the user is segmented and using our trained CNN we predict the class of the images 
 which is stored in the form of string and we perform string operations to get the result.(segment.py)
