@@ -1,11 +1,14 @@
 
-####loading the model
+
 from keras.utils import np_utils
 from keras import backend as K
 K.set_image_dim_ordering('th')
 from tensorflow.keras.models import model_from_json
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
 
-
+####loading the model
 json_file = open('model_final3.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
@@ -13,17 +16,9 @@ loaded_model = model_from_json(loaded_model_json)
 
 loaded_model.load_weights("model_final3.h5")
 
-
-###feature extraction
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
 # import image
 
 image = cv2.imread('-_289.jpg')
-
-
-#%matplotlib inline
 
 
 
@@ -67,12 +62,6 @@ train_data=[]
 for i, ctr in enumerate(sorted_ctrs):
     # Get bounding box
     x, y, w, h = cv2.boundingRect(ctr)
-
-    # Getting ROI
-    roi = image[y:y + h, x:x + w]
-
-    # show ROI
-    # cv2.imshow('segment no:'+str(i),roi)
     cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)    
     im_crop =img_dilation[y:y+h+10,x:x+w+10]
     im_resize = cv2.resize(im_crop,(200,200))
@@ -94,38 +83,38 @@ plt.show()
 
 ####prediction
 
-s=''
+r=''
 for i in range(len(train_data)):
     train_data[i]=np.array(train_data[i])
     train_data[i]=train_data[i].reshape(1,200,200,1)
     result=loaded_model.predict_classes(train_data[i])
     print(result)
-    if(result[0]==10):
-        s=s+'8'
-    if(result[0]==11):
-        s=s+'9'
-    if(result[0]==12):
-        s=s+'*'
     if(result[0]==0):
-        s=s+'-'
+        r=r+'-'
     if(result[0]==1):
-        s=s+'+'
+        r=r+'+'
     if(result[0]==2):
-        s=s+'0'
+        r=r+'0'
     if(result[0]==3):
-        s=s+'1'
+        r=r+'1'
     if(result[0]==4):
-        s=s+'2'
+        r=r+'2'
     if(result[0]==5):
-        s=s+'3'
+        r=r+'3'
     if(result[0]==6):
-        s=s+'4'
+        r=r+'4'
     if(result[0]==7):
-        s=s+'5'
+        r=r+'5'
     if(result[0]==8):
-        s=s+'6'
+        r=r+'6'
     if(result[0]==9):
-        s=s+'7'
+        r=r+'7'
+    if(result[0]==10):
+        r=r+'8'
+    if(result[0]==11):
+        r=r+'9'
+    if(result[0]==12):
+        r=r+'*'
     
-print(s)   
-eval(s)
+print(r)   
+eval(r)
