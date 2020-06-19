@@ -1,4 +1,4 @@
-# mini-project
+# Major-project
 
 Evaluation of Handwritten Expression using CNN(Convolutional Neural Networks)
 
