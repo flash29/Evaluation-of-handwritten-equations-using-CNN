@@ -12,7 +12,7 @@ To run the program :
 
 1. Download the files.
 
-2. upload the image you want to test into the folder and update the name of the image in the path of the image in the segment.py file.
+2. upload the image you want to test into the folder and update the name of the image in the path of the image in the ImageSegment.py file.
 
 3. Then run the program by using an ide like spyder 
 
