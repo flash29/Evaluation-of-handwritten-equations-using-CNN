@@ -42,9 +42,6 @@ kernel = np.ones((10, 1), np.uint8)
 img_dilation = cv2.dilate(thresh, kernel, iterations=1)
 plt.imshow(img_dilation)   
 plt.show() 
-#cv2.imshow('dilated', img_dilation)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
 
 # find contours
 # cv2.findCountours() function changed from OpenCV3 to OpenCV4: now it have only two parameters instead of 3
@@ -66,18 +63,12 @@ for i, ctr in enumerate(sorted_ctrs):
     im_resize = cv2.resize(im_crop,(200,200))
     plt.imshow(im_resize)   
     plt.show() 
-#    cv2.imshow("work",im_resize)
-#    cv2.waitKey(0)
-#    cv2.destroyAllWindows()
     im_resize=np.reshape(im_resize,(200,200,1))
     train_data.append(im_resize)
 
 
 plt.imshow(image)   
 plt.show() 
-#cv2.imshow('marked areas', image)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
 
 
 ####prediction
